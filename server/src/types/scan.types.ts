@@ -3,23 +3,31 @@ export interface ConsoleLog {
   message: string;
 }
 
-export interface ScanRequest {
-  url: string;
-}
-
-export interface ScanResult {
-  title: string;
-  screenshot: string;
-  consoleLogs: ConsoleLog[];
-}
-
 export interface NetworkRequest {
   url: string;
   method: string;
   status: number;
 }
 
-export interface ScanResult {
+export interface JavaScriptException {
+  message: string;
+}
+
+export interface LighthouseReport {
+  performance: number;
+  accessibility: number;
+  bestPractices: number;
+  seo: number;
+}
+
+export interface ScanRequest {
+  url: string;
+}
+
+/**
+ * Result returned by the Playwright scanner only
+ */
+export interface BrowserScanResult {
   title: string;
   screenshot: string;
   consoleLogs: ConsoleLog[];
@@ -27,6 +35,9 @@ export interface ScanResult {
   exceptions: JavaScriptException[];
 }
 
-export interface JavaScriptException {
-  message: string;
+/**
+ * Final result returned to the API
+ */
+export interface ScanResult extends BrowserScanResult {
+  lighthouse: LighthouseReport;
 }

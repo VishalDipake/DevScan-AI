@@ -1,15 +1,19 @@
 import { chromium } from "playwright";
 import fs from "fs";
 import path from "path";
-import { ScanResult } from "../../types/scan.types.js";
+import { BrowserScanResult } from "../../types/scan.types.js";
 
-export async function scanWebsite(url: string): Promise<ScanResult> {
+export async function scanWebsite(
+  url: string
+): Promise<BrowserScanResult> {
   const browser = await chromium.launch({
     headless: true,
   });
 
   try {
     const page = await browser.newPage();
+
+   
 
     const exceptions: {
   message: string;
