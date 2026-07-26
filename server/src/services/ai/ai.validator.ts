@@ -9,7 +9,7 @@ export const aiReportSchema = z.object({
 
   issues: z.array(
     z.object({
-        evidence: z.string(),
+        evidence: z.string().optional().default("Not provided by AI"),
       severity: z.enum([
         "critical",
         "high",
