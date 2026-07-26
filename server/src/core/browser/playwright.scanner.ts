@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { BrowserScanResult } from "../../types/scan.types.js";
 
-export async function scanWebsite(
+export async function scanWebsite(  
   url: string
 ): Promise<BrowserScanResult> {
   const browser = await chromium.launch({
@@ -75,7 +75,7 @@ page.on("console", (msg) => {
 
     return {
   title,
-  screenshot: screenshotPath,
+  screenshot:  "/screenshots/latest.png",
   consoleLogs,
   networkRequests,
   exceptions,

@@ -41,3 +41,19 @@ export interface BrowserScanResult {
 export interface ScanResult extends BrowserScanResult {
   lighthouse: LighthouseReport;
 }
+
+export interface LighthouseAudit {
+  id: string;
+  title: string;
+  description: string;
+  score: number | null;
+}
+
+export interface LighthouseReport {
+  performance: number;
+  accessibility: number;
+  bestPractices: number;
+  seo: number;
+
+  failedAudits: LighthouseAudit[];
+}
