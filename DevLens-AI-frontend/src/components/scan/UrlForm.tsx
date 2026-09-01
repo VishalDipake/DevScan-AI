@@ -1,0 +1,7 @@
+import { useState } from "react";
+import { ArrowRight, Link2 } from "lucide-react";
+export function UrlForm({ onSubmit, disabled }: { onSubmit: (url: string) => void; disabled: boolean }) {
+  const [url, setUrl] = useState(""); const [error, setError] = useState("");
+  function submit(event: React.FormEvent) { event.preventDefault(); const clean = url.trim(); try { const parsed = new URL(clean); if (!/^https?:$/.test(parsed.protocol)) throw new Error(); onSubmit(clean); } catch { setError("Enter a valid http:// or https:// URL."); } }
+  return <form onSubmit={submit} noValidate><label className="sr-only" htmlFor="website-url">Public website URL</label><div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/[.04] p-2 sm:flex-row"><div className="flex min-w-0 flex-1 items-center gap-2 px-3"><Link2 size={16} className="shrink-0 text-slate-500"/><input id="website-url" value={url} onChange={event => { setUrl(event.target.value); setError(""); }} placeholder="https://example.com" className="w-full bg-transparent py-2 text-sm outline-none placeholder:text-slate-600" autoComplete="url" inputMode="url" disabled={disabled}/></div><button disabled={disabled} className="inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:opacity-60">Analyze website <ArrowRight size={16}/></button></div>{error && <p className="mt-2 text-sm text-rose-300" role="alert">{error}</p>}</form>;
+}

@@ -1,0 +1,3 @@
+import { NavLink } from "react-router-dom";
+import { ScanLine } from "lucide-react";
+export function Navbar() { return <header className="border-b border-white/8"><nav className="shell flex h-16 items-center justify-between" aria-label="Primary navigation"><NavLink to="/" className="flex items-center gap-2 font-semibold tracking-tight"><span className="grid size-7 place-items-center rounded-md bg-cyan-300 text-slate-950"><ScanLine size={16}/></span>DevLens <span className="text-cyan-300">AI</span></NavLink><div className="flex gap-5 text-sm text-slate-400"><NavLink to="/" end>Home</NavLink><NavLink to="/dashboard">Dashboard</NavLink></div></nav></header> }
